@@ -10,3 +10,4 @@ Task 8.  a script that writes into the file ls_cwd_content the result of the com
 Task 9. a script that duplicates the last line of the file iacta
 Task 10. a script that deletes all the regular files (not the directories) with a .js extension that are present in the current directory and all its subfolders
 Task 11. a script that counts the number of directories and sub-directories in the current directory
+Task 12. a script that displays the 10 newest files in the current directory
