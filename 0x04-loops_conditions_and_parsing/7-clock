@@ -1,18 +1,12 @@
 #!/usr/bin/env bash
-#A Bash script that displays the time for 12 hours and 59 minutes:
-#display hours from 0 to 12
-#display minutes from 1 to 59
-
-saa=0
-
-while [ $saa -le 12 ]
-do
- echo "saa: $saa"
- dakika=1
- while [ $dakika -le 59 ]
- do
-  echo "$dakika"
-  (( dakika++ ))
- done
- (( saa++ ))
+#A Bash script that displays the time for 12 hours and 59 minutes
+kui=0
+while ((kui <= 12)); do
+	echo "Hour: $kui"
+	nzi=1
+	while ((nzi <= 59)); do
+		echo $nzi
+		((nzi+=1))
+	done
+	((kui+=1))
 done
