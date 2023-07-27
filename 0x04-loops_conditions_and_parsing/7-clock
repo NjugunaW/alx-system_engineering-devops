@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#A Bash script that displays the time for 12 hours and 59 dakikas
+
+saa=0
+
+while [ $saa -le 12 ]
+do
+ echo "saa: $saa"
+ dakika=1
+ while [ $dakika -le 59 ]
+ do
+  echo "$dakika"
+  (( dakika++ ))
+ done
+ (( saa++ ))
+done

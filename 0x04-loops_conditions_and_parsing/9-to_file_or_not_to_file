@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+#A Bash script that gives you information about the school file.
+kui="school"
+if [ -e "kui" ]
+then
+ echo "kui file exists"
+ if [ -s "kui" ]
+ then
+  echo "kui file is not empty"
+ else
+  echo "kui file is empty"
+ fi
+
+ if [ -f "kui" ]
+ then
+  echo "kui is a regular file"
+ fi
+else
+ echo "kui file does not exist"
+fi

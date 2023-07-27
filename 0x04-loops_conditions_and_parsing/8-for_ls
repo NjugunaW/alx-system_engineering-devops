@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#A Bash scrip that dislays the current directory in a list format using for loop
+
+list=$(ls)
+for kn in $list; do
+ echo "$kn" | cut -d '-' -f2
+done
