@@ -1,4 +1,6 @@
-#Using Puppet to make changes to our configuration file
+#!/usr/bin/env bash
+
+# Using Puppet to make changes to our configuration file
 include stdlib
 
 _file_line { 'No password authentication':

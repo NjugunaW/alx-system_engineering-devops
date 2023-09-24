@@ -1,5 +1,6 @@
-#Configuring the SSH file to our needs so that 
-#we can connect it ot the server
+#!/usr/bin/env bash
+# Configuring the SSH file to our needs so that 
+# we can connect it ot the server
 
 Host *
     IdentityFile ~/.ssh/school
