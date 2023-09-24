@@ -1,0 +1,7 @@
+#Configuring the SSH file to our needs so that 
+#we can connect it ot the server
+
+Host *
+    IdentityFile ~/.ssh/school
+    PasswordAuthentication no
+
