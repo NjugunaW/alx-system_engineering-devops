@@ -1,17 +1,26 @@
 #!/usr/bin/env bash
 #Configure your Nginx server to have a custom 404 page
 
-link="https://www.youtube.com/watch?v=QH2-TGUlwu4"
-serv_config="server_name _;\n\trewrite ^/redirect_me/$ $link permanent;"
-location_error="location = /404.html {\n\t\troot /var/www/html/;\n\t\tinternal;\n"
-error_directive="error_page 404 /404.html;\n\t$location_error"
-error_404="}\n\n\t$error_directive\t}"
-
 sudo apt-get update
 sudo apt-get install -y nginx
-ufw allow 'Nginx HTTP'
-echo "Hello World!" > /var/www/html/index.html
-echo "Ceci n'est pas une page" > /var/www/html/404.html
-sed -i "s|server_name\ _;|$serv_config|" /etc/nginx/sites-available/default
-sed -i "0,/}/ s|}|$error_404|" /etc/nginx/sites-available/default
+
+mkdir /etc/nginx/html
+echo "Hello World" > /etc/nginx/html/index.html
+echo "Ceci n'est pas une page" > /etc/nginx/html/404.html
+
+printf %s "server {
+    listen 80;
+    listen [::]:80 default_server;
+    root   /etc/nginx/html;
+    index  index.html index.htm;
+location /redirect_me {
+        return 301 http://www.youtube.com/;
+    }
+    error_page 404 /404.html;
+    location /404 {
+      root /etc/nginx/html;
+      internal;
+    }
+}" > /etc/nginx/sites-enabled/default
+
 sudo service nginx restart

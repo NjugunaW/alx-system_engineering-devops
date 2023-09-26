@@ -4,34 +4,41 @@ exec { 'add nginx stable repo':
   path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
 }
 
+# update packages list
 exec { 'update packages':
   command => 'apt-get update',
   path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
 }
 
+# install nginx server
 package { 'nginx':
   ensure     => 'installed',
 }
 
+# allow 'HTTP'
 exec { 'allow HTTP':
   command => "ufw allow 'Nginx HTTP'",
   path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
   onlyif  => '! dpkg -l nginx | egrep \'îi.*nginx\' > /dev/null 2>&1',
 }
 
+# change rights
 exec { 'chmod www folder':
   command => 'chmod -R 755 /var/www',
   path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
 }
 
+# create idx file
 file { '/var/www/html/index.html':
   content => "Hello World!\n",
 }
 
+# create idx file
 file { '/var/www/html/404.html':
   content => "Ceci n'est pas une page\n",
 }
 
+# redirection page and 404 page
 file { 'Nginx default config file':
   ensure  => file,
   path    => '/etc/nginx/sites-enabled/default',
@@ -59,12 +66,13 @@ file { 'Nginx default config file':
 }
 ",
 }
-
+# Restart nginx
 exec { 'restart service':
   command => 'service nginx restart',
   path    => '/usr/bin:/usr/sbin:/bin',
 }
 
+# start service nginx
 service { 'nginx':
   ensure  => running,
   require => Package['nginx'],
