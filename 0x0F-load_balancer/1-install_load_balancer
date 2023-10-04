@@ -37,4 +37,4 @@ listen hbnb
     server 277995-web-02 54.173.45.189 check
 " >> /etc/haproxy/haproxy.cfg
 
-service haproxy start
+sudo service haproxy start
