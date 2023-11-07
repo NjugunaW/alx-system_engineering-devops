@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""A fnctn that queries the Reddit API and prints titles of the first 10 hot posts"""
+"""A fnctn that queries the Reddit API and prints titles of posts"""
 import requests
 
 
