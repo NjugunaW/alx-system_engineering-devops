@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""A recursive function that queries the Reddit API and parses"""
+""" This function queries the Reddit API
+"""
 from requests import get
 
 REDDIT = "https://www.reddit.com/"
@@ -8,8 +9,8 @@ HEADERS = {'user-agent': 'esw1229/0.0.1'}
 
 def count_words(subreddit, word_list, after="", word_dic={}):
     """
-    Returns a list containing the titles of all hot articles for a
-    given subreddit.
+    Returns the list containing the titles of all hot
+    articles.
     """
     if not word_dic:
         for word in word_list:
@@ -54,7 +55,7 @@ def count_words(subreddit, word_list, after="", word_dic={}):
             for w in word_list:
                 word_dic[w] += lower.count(w.lower())
 
-    except:
+    except ValueError:
         return None
 
     count_words(subreddit, word_list, after, word_dic)
