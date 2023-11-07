@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-"""A fnctn that queries the Reddit API and prints titles of posts"""
+"""A function that prints hot posts on a given Reddit subreddit."""
 import requests
 
 
 def top_ten(subreddit):
-    """This fnctn queries and prints the titles of the 10 hot posts."""
+    """That Prints the titles of the 10 hottest posts on a given subreddit."""
     url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
     headers = {
         "User-Agent": "linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"
