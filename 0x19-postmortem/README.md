@@ -73,8 +73,7 @@ correction of the root cause allowed for a timely service recovery. The implemen
 aim to fortify our authentication system against similar incidents, ensuring a more resilient and 
 reliable experience for our users.
 
-![Alt text](<Coding rule.JPG>)
-
+![Alt text](<Coding rule.PNG>)
 
 
 
