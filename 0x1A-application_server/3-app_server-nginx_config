@@ -1,0 +1,30 @@
+# This configures Nginx to serve the /number_odd_or_even/
+
+server {
+    # IP on port 80
+    listen      80 default_server;
+    listen      [::]:80 default_server ipv6only=on;
+
+    # Use server IP
+    server_name 34.224.2.52;
+
+    # Response header
+    add_header  X-Served-By 277995-web-01;
+
+    # Serve as /airbnb-onepage/ route on AirBnB_clone_v2
+    location = /airbnb-onepage/ {
+        proxy_pass http://127.0.0.1:5000/airbnb-onepage/;
+    }
+
+    # Serves as /number_odd_or_even/ route on AirBnB_clone_v2
+    location ~ /airbnb-dynamic/number_odd_or_even/(\d+)$ {
+        proxy_pass http://127.0.0.1:5001/number_odd_or_even/$1;
+    }
+
+    # Error page
+    error_page 404 /404.html;
+    location /404 {
+        root /var/www/html;
+        internal;
+    }
+}
